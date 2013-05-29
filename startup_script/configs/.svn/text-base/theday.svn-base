@@ -1,0 +1,53 @@
+#	-------------------------------------------------------------------
+#   This is a Sample Config File to refer the format of the config file
+#   Please refer connect.sh file.
+#   PLEASE DO NOT ADD ANY EXAMPLES HERE IN COMMENT !!! (this will affect the processing)
+#   -------------------------------------------------------------------
+
+#   -------------------------Connect Cron------------------------------------------ #
+connect_cron = sh /var/www/greenland1.1/scripts/transformers/connect_cron.sh dev1.greenland.com
+
+#   -------------------------Drupal Cron------------------------------------------ #
+drupal_cron = nice -n10 sh greenland-drush.sh advpm1dev.devcloud.acquia-sites.com /var/www/html/advpm1dev/docroot/ /mnt/tmp 600
+
+#   -------------------------Stats for Anonymous------------------------------------------ #
+stats_anonymous = sh /var/www/greenland1.1/scripts/transformers/stats.sh -u dev1.greenland.com -d greenland -f 100 -l 5 -x anonymous-* -s 10
+
+#   -------------------------Stats for Authenticated------------------------------------------ #
+stats_auth = sh /var/www/greenland1.1/scripts/transformers/stats.sh -u dev1.greenland.com -d greenland -f 100 -l 5 -x authuser-* -s 10
+
+#   -------------------------Stats log processor------------------------------------------ #
+stats_log_processor =  nice -n 10 sh stats_log_processor.sh connectdemo.saxotech.com 10 10
+
+#   -------------------------Taxonomy Extraction------------------------------------------ #
+taxonomy_extraction = nice -n 10 sh scripts/transformers/taxonomy_extraction.sh connectdemo.saxotech.com 60 60
+
+#   -------------------------Range Manipulator------------------------------------------ #
+range_manipulator = nice -n 10 sh scripts/transformers/range_manipulator.sh connectdemo.saxotech.com 60 60
+
+#   -------------------------Connect Node Creator----------------------------------------- #
+connect_node_creator = nice -n 10 sh scripts/transformers/connect_node_creator.sh connectdemo.saxotech.com 60 60
+
+#   -------------------------Transformer Node Merger----------------------------------------- #
+node_merger = nice -n 10 sh scripts/transformers/node_merger_batch.sh connectdemo.saxotech.com 60 60
+
+#   -------------------------Date to age----------------------------------------- #
+date2age = nice -n 10 sh scripts/transformers/date_to_age_transform.sh connectdemo.saxotech.com 60 60
+
+#   -------------------------Shadow Create----------------------------------------- #
+shadow_create = nice -n 10 sh scripts/transformers/shadowprofile_creator.sh connectdemo.saxotech.com 60 60
+
+#   -------------------------Shadow Update----------------------------------------- #
+shadowupdate = nice -n 10 sh scripts/transformers/shadowprofile_update.sh connectdemo.saxotech.com 60 60
+
+#   -------------------------Stats Boosts----------------------------------------- #
+stats_boost = nice -n 10 sh scripts/transformers/stats_boost.sh advpm1dev.devcloud.acquia-sites.com greenland 10
+
+#   -------------------------DO Profile Clone----------------------------------------- #
+do_clone = sh do_profile_clone.sh connectdemo.saxotech.com 30
+
+#   -------------------------DO Profile Delete----------------------------------------- #
+do_delete = nice -n10 sh do_profile_delete.sh connectdemo.saxotech.com 30
+
+#   -------------------------ga scripts----------------------------------------- #
+ga_process = sh scripts/transformers/ga_process.sh connectdemo.saxotech.com

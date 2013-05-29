@@ -1,0 +1,6 @@
+#Commented Line
+connect_cron = sh /var/www/greenland1.1/scripts/transformers/connect_cron.sh dev1.greenland.com
+connect_cron1 = sh /var/www/greenland1.1/scripts/transformers/connect_cron.sh dev1.greenland.com
+stats_anony = sh /var/www/greenland1.1/scripts/transformers/stats.sh -u dev1.greenland.com -d greenland -f 100 -l 5 -x anonymous-* -s 10
+stats_auth = sh /var/www/greenland1.1/scripts/transformers/stats.sh -u dev1.greenland.com -d greenland -f 100 -l 5 -x authuser-* -s 10
+#Use the example USER = whatever
